@@ -1,0 +1,24 @@
+x-tests: &tests
+  build:
+    context: .
+    target: tests
+  env_file:
+    - path: .env
+      required: false
+  init: true
+  shm_size: "2gb"
+  volumes:
+    - .:/app
+
+services:
+  tests-chrome:
+    <<: *tests
+    environment:
+      BROWSER: chrome
+      HEADLESS: "true"
+
+  tests-firefox:
+    <<: *tests
+    environment:
+      BROWSER: firefox
+      HEADLESS: "true"

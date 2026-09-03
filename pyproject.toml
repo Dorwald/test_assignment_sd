@@ -1,0 +1,35 @@
+[project]
+name = "playwright-test-framework"
+version = "0.1.0"
+description = "Extensible UI test framework built with Playwright and pytest."
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "environs==15.1.0",
+    "playwright==1.62.0",
+]
+
+[dependency-groups]
+test = [
+    "allure-pytest==2.16.0",
+    "pytest==9.1.1",
+]
+
+[tool.poetry]
+# This repository is a test suite, not a distributable Python package.
+package-mode = false
+
+[tool.pytest.ini_options]
+addopts = [
+    "-ra",
+    "--strict-config",
+    "--strict-markers",
+    "--alluredir=outputs/allure-results",
+]
+pythonpath = ["src"]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+markers = [
+    "smoke: critical user journeys",
+    "regression: full regression coverage",
+]

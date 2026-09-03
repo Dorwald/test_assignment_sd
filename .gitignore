@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+
+# Secrets
+.env
+
+# Test and report artifacts
+outputs/*
